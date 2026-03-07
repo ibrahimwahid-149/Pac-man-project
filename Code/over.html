@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Over</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>PAC-MAN</h1>
+  <div class="navigation">
+    <!--Navigation bar to go through pages-->
+    <a href="index.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="game.html">Game</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="power.html">Power ups</a>
+  </div>
+
+  <div class="game-over-box">
+    <!--Will contain their final score and a button to play again-->
+    <h3>GAME OVER</h3>
+    <p id="finalScoreText">Your final score: 0</p>
+    <button onclick="restartGame()">Play Again</button>
+  </div>
+
+  <script>
+    // Retrieve the most recent score from localStorage
+    const finalScore = localStorage.getItem("lastScore");
+    // Display the score in the 'finalScoreText' paragraph
+    document.getElementById("finalScoreText").innerText = `Your final score: ${finalScore || 0}`;
+
+    //Redirects the user back to the main game page
+    function restartGame() {
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
+
+

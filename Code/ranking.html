@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rankings</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <h1>RANKINGS</h1>
+
+  <div class="navigation">
+    <!--Navigation bar to go through pages-->
+      <a href="index.html">Register</a>
+      <a href="login.html">Login</a>
+      <a href="game.html">Game</a>
+      <a href="ranking.html">Ranking</a>
+      <a href="power.html">Power ups</a>
+    </div>
+
+
+  <div class="ranking-table">
+    <h2>Top Scores</h2>
+    <!--Shows the users name their rank and their highest score-->
+    <table id="rankingTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+    
+      </tbody>
+    </table>
+  </div>
+
+<script>
+  const tableBody = document.querySelector("#rankingTable tbody");
+
+ //Loads player rankings from localStorage 
+function loadRankings() {
+  const users = [];
+
+  // Loop through every item in localStorage
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+
+    if (["loggedInUser", "lastScore", "selectedPowerUp", "currentScore"].includes(key)) continue;
+
+    try {
+      const data = JSON.parse(localStorage.getItem(key));
+      // If valid user data and score exist, add to users list
+      if (data && data.topScore) {
+        users.push({ username: key, score: data.topScore });
+      }
+    } catch (e) {
+    }
+  }
+
+  // Sorts users by highest score
+  users.sort((a, b) => b.score - a.score);
+
+  tableBody.innerHTML = "";
+
+  if (users.length === 0) {
+    const row = document.createElement("tr");
+    row.innerHTML = `<td colspan="3">No scores yet. Play a game!</td>`;
+    tableBody.appendChild(row);
+    return;
+  }
+
+  // Create and display a table row for each user
+  users.forEach((user, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${user.username}</td>
+      <td>${user.score}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+}
+
+loadRankings();
+</script>
+
+
+</body>
+</html>
+  
+

@@ -1,0 +1,326 @@
+body {
+  margin: 0; /* Removes default browser margins */
+  display: flex; /* Enables flexible layout */
+  align-items: center; /* Centers items vertically */
+  background: darkblue; /* Default background color */
+  font-family: Arial; /* Sets main font */
+  color: white; /* Default text color */
+  flex-direction: column; /* Aligns items top-to-bottom */
+
+  /* Background image setup */
+  background-image: url('../image/background.jpg'); 
+  background-position: center; /* Centers background image */
+  background-size: cover;  /* Image covers entire screen */
+  height: 100vh; /* Full viewport height */
+
+}
+
+/*Game page and heading*/
+h1 {
+  font-size: 50px;
+  /* Yellow Pac-Man color */  
+  color: yellow;  
+} 
+
+
+.register-box {
+  background: darkblue; /* Dark blue box */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center; /* Centers form content */
+  padding: 30px;
+  width: 300px;
+}
+
+/* Style for input fields inside register box */
+.register-box input {
+  width: 250px;
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+}
+
+/* Style for submit button */
+.register-box input[type="submit"] {
+  background: yellow;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/*Navigation bar*/
+.navigation {
+  margin-bottom: 20px;
+}
+
+/* Navigation links styling */
+.navigation a {
+  color: yellow;
+  font-weight: bold;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+/*Cursor hovering on link will turn orange*/
+.navigation a:hover {
+  color: orange;
+}
+
+.login-box {
+  background: darkblue;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+.login-box input {
+  width: 250px;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+}
+
+/*Login button*/
+.login-box input[type="submit"] {
+  background: yellow;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Hover effect for login button */
+.login-box input[type="submit"]:hover {
+  background: yellow;
+}
+
+/* Login page link */
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: white;
+}
+
+.login-link a {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+
+/*Ranking table*/
+.ranking-table {
+  background: darkblue;
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Table formatting */
+table {
+  width: 100%;
+  border-collapse: collapse;  /* Removes spacing between cells */
+  color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid grey;
+  /* Adds line between rows */
+}
+
+/* Table header styling */
+th {
+  color: yellow;
+  font-size: 18px;
+}
+
+/*Power up selection*/
+.options-box {
+  background: darkblue;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 320px;
+}
+
+
+.option {
+  margin: 20px 0;
+}
+
+/* Label styling */
+.option label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Dropdown menu styling */
+.option input[type="range"],
+.option select {
+  width: 300px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+/*Gameover screen*/
+.game-over-box {
+  background: black;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  color: yellow;
+  box-shadow: 0 0 20px black;
+  width: 400px;
+  margin-top: 50px;
+}
+
+/* “Game Over” heading */
+.game-over-box h3 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: red
+}
+
+/* “Play Again” button */
+.game-over-box button {
+  background: yellow;
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* Hover effect for button */
+.game-over-box button:hover {
+  background: orange;
+}
+
+/*Victory screen*/
+.victory-box {
+  background: black;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  color: yellow;
+  width: 350px;
+  box-shadow: 0 0 25px gold;
+}
+
+.victory-box h4 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: green
+}
+
+/* “Play Again” button for victory page */
+.victory-box button {
+  background: yellow;
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.victory-box button:hover {
+  background: orange;
+}
+
+/*Game hud (scores and power up)*/
+.hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 640px;
+  margin-bottom: 10px;
+  color: var(--power);
+  font-weight: bold;
+}
+
+/* Power-up button container */
+.powerUpContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Power-up icon buttons */
+.activatePowerUp {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  border: 2px solid orange;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.3s, opacity 0.3s;
+}
+
+/* Hover animation for power-up icons */
+.activatePowerUp:hover {
+  transform: scale(1.15);
+  box-shadow: orange;
+}
+
+/* Disabled (used) power-ups */
+.activatePowerUp.used {
+  opacity: 0.4;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Glowing active power-up */
+.activatePowerUp.active {
+  animation: laserGlow 0.5s infinite alternate;
+}
+
+/* Animation for glowing button effect */
+@keyframes laserGlow {
+  from {
+    box-shadow: 0 0 10px 2px orange;
+  }
+
+  to {
+    box-shadow: 0 0 20px 6px #ffb347;
+  }
+}
+
+/* Power-up text label below icons */
+.powerUpStatus {
+  color: orange;
+  margin-top: 4px;
+  font-size: 14px;
+  text-shadow: 0 0 5px black;
+}
+
+/*Laser beam styling*/
+.laser-beam {
+  position: absolute;
+  height: 6px;
+  /* Gradient effect for beam */
+  background: linear-gradient(to right, #ff8c00 0%, #ffcc00 60%, rgba(255, 200, 0, 0) 100%);
+  box-shadow: 0 0 25px 10px rgba(255, 140, 0, 0.7);
+  border-radius: 3px;
+  transform-origin: left center;
+  pointer-events: none;
+  z-index: 100; /* Ensures beam appears above game elements */
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Visible when active */
+.laser-beam.active {
+  opacity: 1;
+}

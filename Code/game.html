@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Classic Pac-Man</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/gamestyles.css">
+</head>
+
+<body>
+  <h1>PAC-MAN</h1>
+<!--Navigation bar to go through pages-->
+  <div class="navigation">
+    <a href="index.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="game.html">Game</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="power.html">Power ups</a>
+  </div>
+
+  <!--Show the score at the top-->
+  <div class="hud">
+    <div id="score">Score: 0</div>
+  </div>
+
+  <div class="game-container">
+    <div id="wrap">
+      <!--The visual of laser beam (hidden until activated)-->
+      <div id="laserBeam" class="laser-beam"></div>
+      <canvas id="gc"></canvas>
+    </div>
+
+    <!--Power up section (only one)-->
+    <div class="powerUpContainer">
+      <!--Laser power up-->
+      <img id="activatePowerUp" src="image/laser.png" alt="Laser Power-Up" class="activatePowerUp" />
+      <p id="powerUpStatus" class="powerUpStatus">Laser Ready!</p>
+      <!--Flash (speed) power up-->
+      <img id="activateFlash" src="image/flash.png" alt="Flash Power-Up" class="activatePowerUp" />
+      <p id="flashStatus" class="powerUpStatus">Flash Ready!</p>
+      <!--Invisible (stealth) power up-->
+      <img id="activateInvisible" src="image/invisible.png" alt="Invisible Power-Up" class="activatePowerUp" />
+      <p id="invisibleStatus" class="powerUpStatus">Invisible Ready!</p>
+    </div>
+  </div>
+
+  <!--Instructions on how to play the game-->
+  <div class="controls">Use arrow or WASD keys to move • Eat all pellets.<br>
+    You can use a power up but only once so use it wisely</div>
+
+  <!--Link to Java script-->
+  <script type="module" src="java/game.js"></script>
+</body>
+
+</html>

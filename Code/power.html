@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power-Ups</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>POWER-UPS</h1>
+
+  <div class="navigation">
+    <!--Navigation bar to go through pages-->
+    <a href="index.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="game.html">Game</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="power.html">Power ups</a>
+  </div>
+
+  <div class="options-box">
+    <div class="option">
+      <!--Allows user to select their power up-->
+      <label for="powerUpSelect">Choose your Power-Up:</label>
+      <select id="powerUpSelect">
+        <option value="none">None</option>
+        <option value="laser">Laser Beam</option>
+        <option value="flash">Flash Mode</option>
+        <option value="invisible">Invisibilty</option>
+      </select>
+      <!--Save power up for their game to use-->
+      <button onclick="savePowerUp()">Save Power-Up</button>
+      <p id="result" style="color: yellow; margin-top: 10px;"></p>
+    </div>
+  </div>
+
+  <script>
+    // When the page loads,it checks if a power-up has already been saved
+     window.onload = function() {
+      const saved = localStorage.getItem('selectedPowerUp');
+      if (saved) {
+        //Selects the previously chosen power-up in the dropdown
+        document.getElementById('powerUpSelect').value = saved;
+        document.getElementById('result').innerText = `Current power-up: ${saved}`;
+      }
+    };
+
+    //Saves the users selected power up from local storage
+    function savePowerUp() {
+      const selected = document.getElementById('powerUpSelect').value;
+      localStorage.setItem('selectedPowerUp', selected);
+      document.getElementById('result').innerText = `Power-Up selected: ${selected}`;
+    }
+  </script>
+</body>
+</html>
+

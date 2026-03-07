@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <h1>PAC-MAN</h1>
+  <!--Navigation bar to go through pages-->
+  <div class="navigation">
+    <a href="index.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="game.html">Game</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="power.html">Power ups</a>
+  </div>
+
+  <div class="register-box">
+    <h2>Register</h2>
+    <!--Registration contains username, email, date of brith and password-->
+    <label for="username">Username:</label><br>
+    <input type="text" id="username"><br>
+
+    <label for="email">Email:</label><br>
+    <input type="text" id="email"><br>
+
+    <label for="age">Age:</label><br>
+    <input type="number" id="age"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password"><br>
+
+    <input type="submit" value="Sign up" onclick="registerUser()">
+    <p id="result"></p>
+
+    <!--Link to login page if user already created account-->
+    <p class="login-link">
+      Already have an account?
+      <a href="login.html">Login here</a>
+    </p>
+  </div>
+
+  <script>
+    function registerUser() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const age = document.getElementById('age').value.trim();
+      const result = document.getElementById('result');
+
+      //Will not work if all field are empty
+      if (!username || !password || !email || !age) {
+        result.style.color = 'red';
+        result.innerText = 'Please fill in all fields.';
+        return;
+      }
+
+      //Email must conatain these character.If not they will not move on
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        result.style.color = 'red';
+        result.innerText = 'Please enter a valid email address.';
+        return;
+      }
+
+      //User must enter appropriate date of birth. If not they will not move on
+      const userage = parseInt(age);
+      if (isNaN(userage) || userage < 5 || userage > 100) {
+        result.style.color = 'red';
+        result.innerText = 'Please enter a valid age. Children under 5 and adults over 100 are not recommended to play';
+        return;
+      }
+
+      //Use must enter a strong password. If not won't be accepeted
+      if (password.length < 6 || !/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+        result.style.color = 'red';
+        result.innerText = 'Password must be at least 6 characters long, one uppercase letter one number and a special character.';
+        return;
+      }
+
+      //If they used the same usename it won't be accepted
+      if (localStorage.getItem(username)) {
+        result.style.color = "orange";
+        result.innerHTML = "Username already exists. Please choose another.";
+        return;
+      }
+
+
+      // Create a user data object to store registration details
+      const userData = {
+        username: username,
+        password: password,
+        email: email,
+        age: age,
+        topScore: 0
+      };
+
+      // Save user data to localStorage using the username as the key
+      localStorage.setItem(username, JSON.stringify(userData));
+
+      //If entered right detail, will take you to login page
+      result.style.color = 'lightgreen';
+      result.innerText = 'Account created successfully! Redirecting to login...';
+
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 2000);
+    }
+  </script>
+</body>
+
+</html>

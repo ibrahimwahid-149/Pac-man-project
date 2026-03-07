@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAC-MAN Login</title>
+  <!--Link to the CSS page-->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <h1>PAC-MAN</h1>
+  <!--Navigation bar to go through pages-->
+  <div class="navigation">
+    <a href="index.html">Register</a>
+    <a href="login.html">Login</a>
+    <a href="game.html">Game</a>
+    <a href="ranking.html">Ranking</a>
+    <a href="power.html">Power ups</a>
+  </div>
+
+  <div class="login-box">
+    <h2>Login</h2>
+    <!--Login contains username and password-->
+    <label for="username">Username:</label><br>
+    <input type="text" id="username"><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password"><br>
+
+    <input type="submit" value="Login" onclick="login()">
+    <p id="result"></p>
+
+    <p class="login-link">
+      Don’t have an account?
+      <a href="index.html">Register here</a>
+    </p>
+  </div>
+
+  <script>
+    function login() {
+      //Login contains username and password
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const result = document.getElementById('result');
+
+      //will not work if fields are empty
+      if (!username || !password) {
+        result.style.color = 'red';
+        result.textContent = "Please enter both username and password.";
+        return;
+      }
+
+      //Will not if user is wrong
+      const storedUser = localStorage.getItem(username);
+      if (!storedUser) {
+        result.style.color = 'red';
+        result.textContent = "User not found. Please register first.";
+        return;
+      }
+
+      const userData = JSON.parse(storedUser);
+
+      //Will take user to game if details are correct
+      if (password === userData.password) {
+        result.style.color = 'lightgreen';
+        result.textContent = `Welcome back, ${username}! Redirecting to game...`;
+
+        localStorage.setItem('loggedInUser', username);
+
+        setTimeout(() => {
+          window.location.href = 'game.html';
+        }, 2000);
+      } else {
+        //Will not work if password is incorrect
+        result.style.color = 'red';
+        result.textContent = 'Incorrect password. Try again.';
+      }
+    }
+  </script>
+</body>
+</html>
+
